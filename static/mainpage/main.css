@@ -1,5 +1,10 @@
 h1, h2, h3{
     font-family: 'Acme', sans-serif;
+    color: white;
+}
+
+label{
+    color: white;
 }
 
 .user_me{
@@ -7,7 +12,6 @@ h1, h2, h3{
 }
 
 .center_body {
-    color: white;
     background-color: #17A589;
     text-align: center;
     margin-top: 10px;
