@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page Title</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- My Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "main.css" %}" media="screen">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+
+    <!-- JS Script for Validation Purpose-->
+    <script>
+    function ValidateViaJS()
+    {
+        var x = document.forms["form"]["lname"].value;
+        if (x == "")
+        {
+            return true;
+        }
+        else
+        {
+            console.log("Ivalid Attempt");
+            return false;
+        }
+    }
+</script>
+
+</head>
+<body class="center_body">
+    <div class="page-header">
+        <h2 >Contact Info</h2>
+    </div>
+    <div class="container">
+        <form name="form" role="form" action="" method="post" onsubmit="return ValidateViaJS()">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input class="user_me" type="text" name="lname" placeholder="Last Name">
+            <button class="btn btn-sm" type="submit" value="submit">Hook Me In!</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="alert alert-info">
+            <p>By Hooking in you accept to receive commerical letters!</p>
+        </div>
+    </div>
+
+</body>
+</html>

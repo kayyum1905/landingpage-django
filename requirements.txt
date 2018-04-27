@@ -1,0 +1,7 @@
+Django==1.11.2
+Faker==0.8.12
+psycopg2==2.7.4
+python-dateutil==2.7.2
+pytz==2018.4
+six==1.11.0
+text-unidecode==1.2
