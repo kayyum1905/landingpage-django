@@ -10,14 +10,22 @@ def landing_page(request):
         form = RegisterEmail(request.POST)
 
         if form.is_valid():
+
             name_get = form.cleaned_data.get('form_name')
             mail_get = form.cleaned_data.get('form_email')
 
-            p = User(name=name_get, email=mail_get)
-            p.save()
+            try:
+                #  To Query if object is already in db
+                User.objects.get(email=mail_get)
+            except User.DoesNotExist:
+                p = User(name=name_get, email=mail_get)
+                p.save()
 
-            send_email(name_get, mail_get)
-            return HttpResponse('Thank you: {}, we will soon send email to: {} '.format(name_get, mail_get))
+                send_email(name_get, mail_get)
+                return HttpResponse('Thank you: {}, we will soon send email to: {} '.format(name_get, mail_get))
+
+            return HttpResponse("This email is already registered")
+
     else:
         form = RegisterEmail()
 
