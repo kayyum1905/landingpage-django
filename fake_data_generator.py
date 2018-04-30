@@ -11,9 +11,7 @@ from mainpage.models import User
 
 fake = Faker()
 
-fields = ['.com', '.net', '.mail']
-
-for data in range(25):
+for data in range(10000):
     f_name = fake.name()
     f_email = fake.email()
 
